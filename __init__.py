@@ -12,7 +12,7 @@ class MyFirstSkill(MycroftSkill):
     @intent_handler('skill.study.intent')
     def handle_skill_study(self, message):
         time = self.get_response('skill.study')
-        print(time)
+        self.speak_dialog('skill.study.confirmation', {'time': time})
 
 
 def create_skill():
