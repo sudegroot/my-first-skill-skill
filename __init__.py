@@ -1,4 +1,4 @@
-from mycroft import MycroftSkill, intent_handler
+from mycroft import MycroftSkill, intent_handler, extract_duration
 
 
 class MyFirstSkill(MycroftSkill):
@@ -11,7 +11,7 @@ class MyFirstSkill(MycroftSkill):
 
     @intent_handler('skill.study.intent')
     def handle_skill_study(self, message):
-        time = self.extract_datetime(self.get_response('skill.study'))
+        time = extract_duration(self.get_response('skill.study'))
         self.speak_dialog('skill.study.confirmation', {'time': time})
 
 
