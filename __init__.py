@@ -11,7 +11,7 @@ class MyFirstSkill(MycroftSkill):
 
     @intent_handler('skill.study.intent')
     def handle_skill_study(self, message):
-        time = self.get_response('skill.study')
+        time = self.extract_datetime(self.get_response('skill.study'))
         self.speak_dialog('skill.study.confirmation', {'time': time})
 
 
