@@ -9,7 +9,6 @@ class MyFirstSkill(MycroftSkill):
     def handle_skill_first_my(self, message):
         self.speak_dialog('skill.first.my')
 
-
 def create_skill():
     return MyFirstSkill()
 
