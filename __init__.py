@@ -1,5 +1,5 @@
-from mycroft import MycroftSkill, intent_handler, extract_duration
-
+from mycroft import MycroftSkill, intent_handler
+from mycroft.util.parse import extract_duration
 
 class MyFirstSkill(MycroftSkill):
     def __init__(self):
