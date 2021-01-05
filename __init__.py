@@ -1,5 +1,6 @@
 from mycroft import MycroftSkill, intent_handler
 from mycroft.util.parse import extract_duration
+from mycroft.core import AlarmSkill
 
 class MyFirstSkill(MycroftSkill):
     def __init__(self):
