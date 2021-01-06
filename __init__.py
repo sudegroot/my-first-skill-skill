@@ -1,3 +1,5 @@
+import time
+from threading import Timer
 from mycroft import MycroftSkill, intent_handler
 from mycroft.util.parse import extract_duration
 
@@ -13,8 +15,12 @@ class MyFirstSkill(MycroftSkill):
     def handle_skill_study(self, message):
         time = extract_duration(self.get_response('skill.study'))[0]
         self.speak_dialog('skill.study.confirmation', {'time': str(time)})
-
-
+        t = Timer(time,timeout)
+        t.start()
+        while true:
+            time.sleep(1)
+        self.speak_dialog('skill.study.end')
+   
 
 def create_skill():
     return MyFirstSkill()
