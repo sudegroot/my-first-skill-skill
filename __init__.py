@@ -13,6 +13,8 @@ class MyFirstSkill(MycroftSkill):
     def handle_skill_study(self, message):
         time = extract_duration(self.get_response('skill.study'))[0]
         self.speak_dialog('skill.study.confirmation', {'time': str(time)})
+        if time == 0:
+            self.speak_dialog('skill.study.end')
 
 
 def create_skill():
