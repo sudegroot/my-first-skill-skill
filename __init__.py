@@ -12,17 +12,15 @@ class MyFirstSkill(MycroftSkill):
 
     @intent_handler('skill.study.intent')
     def handle_skill_study(self, message):
-        time = extract_duration(self.get_response('skill.study'))[0]
-        self.speak_dialog('skill.study.confirmation', {'time': str(time)})
-
-    #    t = extract_duration(self.get_response('skill.study'))[0]
-     #   self.speak_dialog('skill.study.confirmation', {'time': str(t)})
-     #   t = t*60
-     #   duration = 0
-     #   while duration < t:
-     #       time.sleep(1)
-     #       duration+=1
-     #   self.speak_dialog('skill.study.end')
+        t = extract_duration(self.get_response('skill.study'))[0]
+        self.speak_dialog('skill.study.confirmation', {'time': str(t)})
+        duration = t*60
+        for i in range(duration):
+            time.sleep(1)
+        self.speak_dialog('skill.study.end')
+        
+             #   time = extract_duration(self.get_response('skill.study'))[0]
+      #  self.speak_dialog('skill.study.confirmation', {'time': str(time)})
    
 
 def create_skill():
