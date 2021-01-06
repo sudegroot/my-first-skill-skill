@@ -21,14 +21,16 @@ class MyFirstSkill(MycroftSkill):
         self.speak_dialog('skill.study.confirmation', {'time': str(t)})
         blocks = int(blocks)
         for i in range(blocks):
-            time.sleep(25)
-            self.speak_dialog('skill.study.break.begin')
-            time.sleep(5)
-            self.speak_dialog('skill.study.break.end') 
+            time.sleep(1500)
+            if i <  blocks-1:
+                self.speak_dialog('skill.study.break.begin')
+                time.sleep(300)
+                self.speak_dialog('skill.study.break.end') 
+            if i == blocks-1:
+                break
         self.speak_dialog('skill.study.end') 
-     
-         
-   
+
+
 
 def create_skill():
     return MyFirstSkill()
