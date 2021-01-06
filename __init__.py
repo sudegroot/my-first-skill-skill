@@ -20,7 +20,7 @@ class MyFirstSkill(MycroftSkill):
       #  t = extract_duration(self.get_response('skill.study'))[0]
       #  self.speak_dialog('skill.study.confirmation', {'time': str(t)})
       #  duration = t*60
-      #  time.sleep(duration)
+      #  time.sleep(int(duration))
       #  self.speak_dialog('skill.study.end') 
        
      
