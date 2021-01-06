@@ -22,8 +22,9 @@ class MyFirstSkill(MycroftSkill):
         blocks = int(blocks)
         for i in range(blocks):
             time.sleep(25)
-            self.speak_dialog('skill.study.break') 
+            self.speak_dialog('skill.study.break.begin')
             time.sleep(5)
+            self.speak_dialog('skill.study.break.end') 
         self.speak_dialog('skill.study.end') 
      
          
