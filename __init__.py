@@ -1,4 +1,4 @@
-import time
+#import time
 from mycroft import MycroftSkill, intent_handler
 from mycroft.util.parse import extract_duration
 
@@ -14,15 +14,17 @@ class MyFirstSkill(MycroftSkill):
         
     @intent_handler('skill.study.intent')
     def handle_skill_study(self, message):
-        t = extract_duration(self.get_response('skill.study'))[0]
-        self.speak_dialog('skill.study.confirmation', {'time': str(t)})
-        duration = t*60
-        time.sleep(duration)
-        self.speak_dialog('skill.study.end') 
+        time = extract_duration(self.get_response('skill.study'))[0]
+        self.speak_dialog('skill.study.confirmation', {'time': str(time)})
+        
+      #  t = extract_duration(self.get_response('skill.study'))[0]
+      #  self.speak_dialog('skill.study.confirmation', {'time': str(t)})
+      #  duration = t*60
+      #  time.sleep(duration)
+      #  self.speak_dialog('skill.study.end') 
        
      
-      #   time = extract_duration(self.get_response('skill.study'))[0]
-      #  self.speak_dialog('skill.study.confirmation', {'time': str(time)})
+         
    
 
 def create_skill():
