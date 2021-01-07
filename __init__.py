@@ -1,6 +1,5 @@
 #import time
 from mycroft import MycroftSkill, intent_handler
-from mycroft.messagebus import Message
 from mycroft_bus_client import MessageBusClient, Message
 class MyFirstSkill(MycroftSkill):
 
