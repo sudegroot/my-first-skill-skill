@@ -6,6 +6,10 @@ class MyFirstSkill(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
 
+    def initialize(self):
+        self.add_event('skill.mycrofttimer.expired',
+                       self.handler_time_up)
+
     @intent_handler('skill.first.my.intent')
     def handle_skill_first_my(self, message):
         self.speak_dialog('skill.first.my')
@@ -18,15 +22,11 @@ class MyFirstSkill(MycroftSkill):
 	# so that the Timer Skill from mycroft will recognize it and set the timer accordingly.
         self.bus.emit(Message("recognizer_loop:utterance", {'utterances': ["set a timer for %s" %time], 'lang': 'en-us'}))
 
-      #  t = extract_duration(self.get_response('skill.study'))[0]
-      #  self.speak_dialog('skill.study.confirmation', {'time': str(t)})
-      #  duration = t*60
-      #  time.sleep(duration)
-      #  self.speak_dialog('skill.study.end') 
-       
-     
-         
-   
+    def handler_time_up(self, message):
+        self.bus.emit(Message('speak',{"utterance": message,
+        "lang": 'en-us'}))
+        print(message)
+
 
 def create_skill():
     return MyFirstSkill()
