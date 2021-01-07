@@ -23,9 +23,8 @@ class MyFirstSkill(MycroftSkill):
         self.bus.emit(Message("recognizer_loop:utterance", {'utterances': ["set a timer for %s" %time], 'lang': 'en-us'}))
 
     def handler_time_up(self, message):
-        self.bus.emit(Message('speak',{"utterance": message,
+        self.bus.emit(Message('speak',{"utterance": 'This is a test',
         "lang": 'en-us'}))
-        print(message)
 
 
 def create_skill():
