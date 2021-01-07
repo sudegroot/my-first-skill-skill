@@ -23,6 +23,7 @@ class MyFirstSkill(MycroftSkill):
         self.bus.emit(Message("recognizer_loop:utterance",{'utterances': ["set a timer for %s" %time], 'lang': 'en-us'}))
 
     def handle_skill_study_break(self, message):
+        self.bus.emit(Message("recognizer_loop:utterance",{'utterances': ["stop timer"], 'lang': 'en-us'}))
         self.get_response('skill.study.break')
 
 
