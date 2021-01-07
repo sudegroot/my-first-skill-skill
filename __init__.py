@@ -3,6 +3,7 @@ from mycroft import MycroftSkill, intent_handler
 from mycroft.messagebus import Message
 from mycroft_bus_client import MessageBusClient, Message
 class MyFirstSkill(MycroftSkill):
+
     def __init__(self):
         MycroftSkill.__init__(self)
 
@@ -11,8 +12,9 @@ class MyFirstSkill(MycroftSkill):
 #	pass
 
     def initialize(self):
-        client = MessageBusClient('skill.mycrofttimer.expired', self.handle_skill_study_break)
-        client.run_forever()
+        client = MessageBusClient()
+        client.on('skill.mycrofttimer.expired', self.handle_skill_study_break)
+	client.run_forever()
 
     @intent_handler('skill.first.my.intent')
     def handle_skill_first_my(self, message):
@@ -26,9 +28,9 @@ class MyFirstSkill(MycroftSkill):
 	# so that the Timer Skill from mycroft will recognize it and set the timer accordingly.
         self.bus.emit(Message("recognizer_loop:utterance", {'utterances': ["set a timer for %s" %time], 'lang': 'en-us'}))
 
-    def handle_skill_study_break(self, message):
-        self.get_response('skill.study.break')
-
+    def handle_skill_study_break(message):
+#        self.get_response('skill.study.break')
+	pass
  #   def handler_time_up(self, message):
  #       pass
 
