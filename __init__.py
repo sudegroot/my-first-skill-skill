@@ -25,6 +25,10 @@ class MyFirstSkill(MycroftSkill):
     #def handler_time_up(self, message):
         #self.bus.emit(Message('speak',{"utterance": 'This is a test',
         #"lang": 'en-us'}))
+	
+     @intent_handler('skill.planning.intent')
+     def handle_skill_planning(self, message):
+	self.speak_dialoog('skill.planning')
 
 
 def create_skill():
