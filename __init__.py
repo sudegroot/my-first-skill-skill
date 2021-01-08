@@ -14,6 +14,8 @@ class MyFirstSkill(MycroftSkill):
 # To convert  blocks to an int, itt first needs to be a  string. The variable must be of time int for us to be able to put it into a range for the  loop
         blocks = str(blocks)
         blocks = int(blocks)
+#The time.sleep() function  takes an input of seconds. So if  you want the code to sleep for several minutes you should multiply the values  witth  60
+#Currently everythting is in second for debugging purposes
         for i in range(blocks):
             time.sleep(25)
             if i <  blocks-1:
