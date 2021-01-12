@@ -13,6 +13,7 @@ class MyFirstSkill(MycroftSkill):
         
         # Give a welcome message to the user
         self.speak_dialog('skill.welcome')
+        participantnumber = self.get_response('skill.participant.number')
         
         # Get the tasks the user wants to accomplish
         tasks = []
@@ -48,17 +49,12 @@ class MyFirstSkill(MycroftSkill):
 
         # Get the amount of blocks from the user
         #blocks = self.get_response('blocks.amount.of.blocks')
-        
-     
         self.speak_dialog('blocks.amount.of.blocks')
-        blocks = extract_number(self.ask_selection(['one block', 'two blocks', 'three blocks', 'four blocks', 'five blocks', 'six blocks'], 'blocks.selection'))
+        blocks = extract_number(self.ask_selection(['one block', 'two blocks', 'three blocks'], 'blocks.selection'))
         while not blocks:
-            # self.speak_dialog('skill.blocks.could.not.understand')
-            # blocks = extract_number(self.get_response('blocks.amount.of.blocks'))
-            
-            # a selection is tried to choose the number of blocks, to help minimize pronunciation errors (it does not work very well yet tho so maybe it will be reversed to how it first was)
             self.speak_dialog('skill.blocks.could.not.understand')
-            blocks = extract_number(self.ask_selection(['one block', 'two blocks', 'three blocks', 'four blocks', 'five blocks', 'six blocks'], 'blocks.selection'))
+            blocks = extract_number(self.ask_selection(['one block', 'two blocks', 'three blocks'], 'skill.blocks.could.not.understand'))
+           
         
         # To convert  blocks to an int, it first needs to be a string. 
         # The variable must be of type int for further use
