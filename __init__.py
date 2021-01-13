@@ -50,18 +50,15 @@ class MyFirstSkill(MycroftSkill):
         self.speak_dialog('tasks.confirmation', data={"number_of_tasks": number_of_tasks})
 
         # Get the amount of blocks from the user
-        #blocks = self.get_response('blocks.amount.of.blocks')
+        # a selection is used, to minimize pronunciation errors. This way, the answer is compared to the options and the option that matches the answer the most is chosen.
+        # For example, if mycroft thinks a user says 'free brooks', he will pick three blocks as answer.
+
         self.speak_dialog('blocks.amount.of.blocks')
         blocks = extract_number(self.ask_selection(['one block', 'two blocks', 'three blocks'], 'blocks.selection'))
         while not blocks:
             self.speak_dialog('skill.blocks.could.not.understand')
             blocks = extract_number(self.ask_selection(['one block', 'two blocks', 'three blocks'], 'skill.blocks.could.not.understand'))
-           
-        
-        # To convert  blocks to an int, it first needs to be a string. 
-        # The variable must be of type int for further use
-       # blocks = str(blocks)
-       # blocks = int(blocks)
+
          
         # If the user selects one block, Mycroft responds with the singular "block" 
         if blocks == 1:
