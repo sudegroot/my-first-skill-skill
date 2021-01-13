@@ -32,15 +32,19 @@ class MyFirstSkill(MycroftSkill):
         elif another_task == "no":
             self.speak_dialog('tasks.moveon')
 
-        last_task = self.ask_yesno('tasks.last.task')
-        while last_task != 'yes' and last_task != 'no':
-            self.speak_dialog('skill.last.task.could.not.understand')
-            last_task = self.ask_yesno('tasks.last.task')
-        if last_task == "yes":
-            task3 = self.get_response('tasks.task3')
-            tasks.append(task3)
-        elif last_task == "no":
-            self.speak_dialog('tasks.moveon')
+        # make sure a lask task is only asked when there was added a second task
+        if another_task == "yes":
+            last_task = self.ask_yesno('tasks.last.task') # ask what the last task is
+            
+            while last_task != 'yes' and last_task != 'no': # keep asking if the user did not answer with yes or no
+                self.speak_dialog('skill.last.task.could.not.understand')
+                last_task = self.ask_yesno('tasks.last.task')
+            # check if user answered yes (then set third task) or no (then continue)
+            if last_task == "yes":
+                task3 = self.get_response('tasks.task3')
+                tasks.append(task3)
+            elif last_task == "no":
+                self.speak_dialog('tasks.moveon')
 
         if len(tasks) == 1:
             number_of_tasks = "1 task"
