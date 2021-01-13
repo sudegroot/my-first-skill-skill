@@ -30,6 +30,7 @@ class MyFirstSkill(MycroftSkill):
             task2 = self.get_response('tasks.task2')
             tasks.append(task2)
         elif another_task == "no":
+            self.speak_dialog('tasks.confirmation', data={"number_of_tasks": number_of_tasks})
             self.speak_dialog('tasks.moveon')
 
         # make sure a lask task is only asked when there was added a second task
@@ -43,7 +44,10 @@ class MyFirstSkill(MycroftSkill):
             if last_task == "yes":
                 task3 = self.get_response('tasks.task3')
                 tasks.append(task3)
+                self.speak_dialog('tasks.confirmation', data={"number_of_tasks": number_of_tasks})
+                self.speak_dialog('tasks.moveon')
             elif last_task == "no":
+                self.speak_dialog('tasks.confirmation', data={"number_of_tasks": number_of_tasks})
                 self.speak_dialog('tasks.moveon')
 
         if len(tasks) == 1:
@@ -51,7 +55,7 @@ class MyFirstSkill(MycroftSkill):
         if len(tasks) > 1:
             number_of_tasks = "{} tasks".format(len(tasks))
 
-        self.speak_dialog('tasks.confirmation', data={"number_of_tasks": number_of_tasks})
+#         self.speak_dialog('tasks.confirmation', data={"number_of_tasks": number_of_tasks})
 
         # Get the amount of blocks from the user
         # a selection is used, to minimize pronunciation errors. This way, the answer is compared to the options and the option that matches the answer the most is chosen.
